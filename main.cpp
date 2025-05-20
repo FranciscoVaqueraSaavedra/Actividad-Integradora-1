@@ -21,7 +21,7 @@ string  read_file_content(const string &filename) {
     return content;
 }
 
-pair<bool, size_t> containsPattern(const string &text, const string &pattern) {
+pair<bool, size_t> contains_pattern(const string &text, const string &pattern) {
     size_t pos = text.find(pattern);
     return (pos != string::npos) ? make_pair(true, pos + 1) : make_pair(false, static_cast<size_t>(0));
 
@@ -82,7 +82,7 @@ int main() {
 
     cout << "Parte 1:" << endl;
     for (int i = 0; i < 3; i++) {
-        auto result1 = containsPattern(transmission1, mcodes[i]);
+        auto result1 = contains_pattern(transmission1, mcodes[i]);
 
         if (result1.first)
             cout << "true " << result1.second << endl;
@@ -91,7 +91,7 @@ int main() {
     }
 
     for (int i = 0; i < 3; i++) {
-        auto result2 = containsPattern(transmission2, mcodes[i]);
+        auto result2 = contains_pattern(transmission2, mcodes[i]);
 
         if (result2.first)
             cout << "true " << result2.second << endl;
