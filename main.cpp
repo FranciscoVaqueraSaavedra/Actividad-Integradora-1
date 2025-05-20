@@ -28,27 +28,38 @@ pair<bool, size_t> contains_pattern(const string &text, const string &pattern) {
 }
 
 
+pair<int, int> expand_center(const string &text, int left, int right) {
+    int n = text.size();
+    while (left >= 0 && right < n && text[left] == text[right]) {
+        --left;
+        ++right;
+    }
+    return {left + 1, right - left - 1}; // start index, length
+}
+
 pair<int, int> longest_palindrome(const string &text) {
     int n = text.size();
     if (n == 0) return {1, 1};
 
-    int maxLen = 1, start = 0;
+    int start = 0, max_len = 1;
+
     for (int i = 0; i < n; ++i) {
-        for (int j = 0; (i - j >= 0) && (i + j < n) && (text[i - j] == text[i + j]); ++j) {
-            if (2 * j + 1 > maxLen) {
-                maxLen = 2 * j + 1;
-                start = i - j;
-            }
+        auto [s1, l1] = expand_center(text, i, i);       // Odd-length palindrome
+        auto [s2, l2] = expand_center(text, i, i + 1);   // Even-length palindrome
+
+        if (l1 > max_len) {
+            start = s1;
+            max_len = l1;
         }
-        for (int j = 0; (i - j >= 0) && (i + j + 1 < n) && (text[i - j] == text[i + j + 1]); ++j) {
-            if (2 * j + 2 > maxLen) {
-                maxLen = 2 * j + 2;
-                start = i - j;
-            }
+        if (l2 > max_len) {
+            start = s2;
+            max_len = l2;
         }
     }
-    return {start + 1, start + maxLen};
+
+    return {start + 1, start + max_len};
 }
+
 
 
 pair<int, int> longestCommonSubstring(const string &text1, const string &text2) {
