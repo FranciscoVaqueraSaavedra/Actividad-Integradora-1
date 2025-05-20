@@ -62,7 +62,7 @@ pair<int, int> longest_palindrome(const string &text) {
 
 
 
-pair<int, int> longestCommonSubstring(const string &text1, const string &text2) {
+pair<int, int> longest_common_substring(const string &text1, const string &text2) {
     int m = text1.size(), n = text2.size();
     vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
     int maxLen = 0, endIdx = 0;
@@ -120,7 +120,7 @@ int main() {
          << transmission2.substr(palindrome2.first - 1, (palindrome2.second - palindrome2.first + 1)) << endl;
 
 
-    auto commonSubstring = longestCommonSubstring(transmission1, transmission2);
+    auto commonSubstring = longest_common_substring(transmission1, transmission2);
     cout << "Parte 3:" << endl;
     cout << commonSubstring.first << " " << commonSubstring.second << " "
          << transmission1.substr(commonSubstring.first - 1, (commonSubstring.second - commonSubstring.first + 1)) << endl;
