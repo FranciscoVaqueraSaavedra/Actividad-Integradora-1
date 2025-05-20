@@ -28,7 +28,7 @@ pair<bool, size_t> contains_pattern(const string &text, const string &pattern) {
 }
 
 
-pair<int, int> longestPalindrome(const string &text) {
+pair<int, int> longest_palindrome(const string &text) {
     int n = text.size();
     if (n == 0) return {1, 1};
 
@@ -100,8 +100,8 @@ int main() {
     }
 
 
-    auto palindrome1 = longestPalindrome(transmission1);
-    auto palindrome2 = longestPalindrome(transmission2);
+    auto palindrome1 = longest_palindrome(transmission1);
+    auto palindrome2 = longest_palindrome(transmission2);
     cout << "Parte 2:" << endl;
     cout << palindrome1.first << " " << palindrome1.second << " "
          << transmission1.substr(palindrome1.first - 1, (palindrome1.second - palindrome1.first + 1)) << endl;
