@@ -11,7 +11,7 @@
 //hola fra
 using namespace std;
 
-string readFileContent(const string &filename) {
+string  read_file_content(const string &filename) {
     ifstream file(filename);
     if (!file) {
         cerr << "Error al abrir el archivo: " << filename << endl;
@@ -72,12 +72,12 @@ pair<int, int> longestCommonSubstring(const string &text1, const string &text2) 
 
 int main() {
     // Leer archivos
-    string transmission1 = readFileContent("C:/Users/Franc/CLionProjects/Actividad Integradora 1/transmission1.txt");
-    string transmission2 = readFileContent("C:/Users/Franc/CLionProjects/Actividad Integradora 1/transmission2.txt");
+    string transmission1 =  read_file_content("C:/Users/Franc/CLionProjects/Actividad Integradora 1/transmission1.txt");
+    string transmission2 =  read_file_content("C:/Users/Franc/CLionProjects/Actividad Integradora 1/transmission2.txt");
     vector<string> mcodes = {
-        readFileContent("C:/Users/Franc/CLionProjects/Actividad Integradora 1/mcode1.txt"),
-        readFileContent("C:/Users/Franc/CLionProjects/Actividad Integradora 1/mcode2.txt"),
-        readFileContent("C:/Users/Franc/CLionProjects/Actividad Integradora 1/mcode3.txt")
+         read_file_content("C:/Users/Franc/CLionProjects/Actividad Integradora 1/mcode1.txt"),
+         read_file_content("C:/Users/Franc/CLionProjects/Actividad Integradora 1/mcode2.txt"),
+         read_file_content("C:/Users/Franc/CLionProjects/Actividad Integradora 1/mcode3.txt")
     };
 
     cout << "Parte 1:" << endl;
