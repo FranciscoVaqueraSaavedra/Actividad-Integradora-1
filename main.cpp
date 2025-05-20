@@ -39,7 +39,10 @@ pair<int, int> expand_center(const string &text, int left, int right) {
 
 pair<int, int> longest_palindrome(const string &text) {
     int n = text.size();
-    if (n == 0) return {1, 1};
+    if (n == 0) {
+        return {1, 1};
+    }
+
 
     int start = 0, max_len = 1;
 
