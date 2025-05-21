@@ -20,7 +20,9 @@ std::pair<int, int> expand_center(const std::string &text, int left, int right) 
 
 std::pair<int, int> longest_palindrome(const std::string &text) {
     int n = text.size();
-    if (n == 0) return {1, 1};
+    if (n == 0) {
+        return {1, 1};
+    }
     int start = 0, max_len = 1;
     for (int i = 0; i < n; ++i) {
         auto [s1, l1] = expand_center(text, i, i);
