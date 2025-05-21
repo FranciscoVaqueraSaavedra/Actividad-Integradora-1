@@ -27,8 +27,14 @@ std::pair<int, int> longest_palindrome(const std::string &text) {
     for (int i = 0; i < n; ++i) {
         auto [s1, l1] = expand_center(text, i, i);
         auto [s2, l2] = expand_center(text, i, i + 1);
-        if (l1 > max_len) { start = s1; max_len = l1; }
-        if (l2 > max_len) { start = s2; max_len = l2; }
+        if (l1 > max_len) {
+            start = s1;
+            max_len = l1;
+        }
+        if (l2 > max_len) {
+            start = s2;
+            max_len = l2;
+        }
     }
     return {start, max_len};
 }
