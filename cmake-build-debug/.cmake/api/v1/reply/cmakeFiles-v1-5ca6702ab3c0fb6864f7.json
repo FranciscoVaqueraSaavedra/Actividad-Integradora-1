@@ -232,26 +232,6 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/fc-tmp/googletest/download.cmake"
-		},
-		{
-			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/fc-tmp/googletest/googletest-gitclone.cmake"
-		},
-		{
-			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/fc-tmp/googletest/update.cmake"
-		},
-		{
-			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/fc-tmp/googletest/googletest-gitupdate.cmake"
-		},
-		{
-			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/fc-tmp/googletest/patch.cmake"
-		},
-		{
-			"isGenerated" : true,
 			"path" : "cmake-build-debug/_deps/googletest-src/CMakeLists.txt"
 		},
 		{

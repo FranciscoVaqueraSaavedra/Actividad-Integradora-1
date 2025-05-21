@@ -11,6 +11,8 @@ set (SOURCES
         main.cpp
         utils.h
         palindrome.h
+        substring.h
+        substring.cpp
 )
 
 add_executable(main ${SOURCES})

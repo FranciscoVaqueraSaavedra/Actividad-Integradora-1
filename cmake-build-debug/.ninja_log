@@ -1,3 +1,8 @@
 # ninja log v6
 5	615	7694130781186736	CMakeFiles/Actividad_Integradora_1.dir/main.cpp.obj	ceb6acb9624e3832
 616	717	7694130787288873	Actividad_Integradora_1.exe	cab76e0585a4bb17
+3	867	7695097409456465	CMakeFiles/main.dir/main.cpp.obj	f3bfc1cef0035226
+872	1431	7695097418133476	main.exe	83f657227df8c66e
+14	681	7695116287065548	CMakeFiles/main.dir/substring.cpp.obj	53d0e7ee9bd442e4
+7	987	7695116286995748	CMakeFiles/main.dir/main.cpp.obj	f3bfc1cef0035226
+987	1174	7695116296798922	main.exe	58b4bd5873615327
