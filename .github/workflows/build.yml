@@ -38,8 +38,8 @@ jobs:
       uses: sonarsource/sonarqube-scan-action@v3
       with:
         args: >
-          -Dsonar.projectKey=franciscovaquera_actividad1
-          -Dsonar.organization=franciscovaquera
+          -Dsonar.projectKey=Actividad-en-clase-6-A01234377
+          -Dsonar.organization=team04
           -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.cfamily.build-wrapper-output=bw-output
           -Dsonar.coverageReportPaths=coverage.xml
