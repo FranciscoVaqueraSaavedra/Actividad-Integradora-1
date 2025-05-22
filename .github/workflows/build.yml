@@ -1,47 +1,40 @@
-name: C++ SonarQube Analysis
+name: C++ CI con cobertura
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout código
+    - name: Clonar el repositorio
       uses: actions/checkout@v3
 
     - name: Instalar gcovr y compiladores
       run: |
         sudo apt update
-        sudo apt install -y lcov g++ gcov
+        sudo apt install -y lcov g++
         pip install gcovr
 
-    - name: Compilar con cobertura
+    - name: Compilar mi_programa.cpp con flags de cobertura
       run: |
-        g++ -fprofile-arcs -ftest-coverage -fPIC -O0 -o actividad1 main.cpp
+        g++ -fprofile-arcs -ftest-coverage -o main main.cpp
 
-    - name: Ejecutar pruebas (ejecutable)
+    - name: Ejecutar el programa
       run: |
-        ./actividad1
+        ./mi_programa
 
-    - name: Generar reporte cobertura SonarQube
+    - name: Generar reporte de cobertura en HTML
       run: |
-        gcovr --sonarqube coverage.xml
+        gcovr --root . --html --html-details -o coverage.html
 
-    - name: Ejecutar análisis SonarQube
-      uses: sonarsource/sonarqube-scan-action@v3
+    - name: Subir artefacto del reporte de cobertura
+      uses: actions/upload-artifact@v3
       with:
-        args: >
-          -Dsonar.projectKey=Actividad-en-clase-6-A01234377
-          -Dsonar.organization=team04
-          -Dsonar.host.url=https://sonarcloud.io
-          -Dsonar.cfamily.build-wrapper-output=bw-output
-          -Dsonar.coverageReportPaths=coverage.xml
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        name: coverage-report
+        path: coverage.html
