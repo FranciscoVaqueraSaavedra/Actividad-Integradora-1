@@ -1,38 +1,27 @@
-name: C++ CI with gcovr
+name: Build
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+
 
 jobs:
   build:
+    name: Build and analyze
     runs-on: ubuntu-latest
-
+    
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Install gcovr and g++
-      run: |
-        sudo apt update
-        sudo apt install -y gcovr g++
-
-    - name: Compile with coverage flags
-      run: |
-        g++ -fprofile-arcs -ftest-coverage -std=c++11 -o mi_programa main.cpp
-
-    - name: Run program
-      run: |
-        ./mi_programa
-
-    - name: Generate coverage report
-      run: |
-        gcovr --root . --exclude-directories test --html --html-details -o coverage.html
-
-    - name: Upload coverage report
-      uses: actions/upload-artifact@v3
-      with:
-        name: coverage-report
-        path: coverage.html
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: sonarsource/sonarqube-scan-action@v3
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # If you wish to fail your job when the Quality Gate is red, uncomment the
+      # following lines. This would typically be used to fail a deployment.
+      # - uses: sonarsource/sonarqube-quality-gate-action@master
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
