@@ -1,39 +1,37 @@
-name: C++ CI con cobertura
+name: C++ CI with gcovr
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clonar el repositorio
+    - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Instalar gcovr y compiladores
+    - name: Install gcovr and g++
       run: |
         sudo apt update
-        sudo apt install -y lcov g++
-        pip install gcovr
+        sudo apt install -y gcovr g++
 
-    - name: Compilar mi_programa.cpp con flags de cobertura
+    - name: Compile with coverage flags
       run: |
-        g++ -fprofile-arcs -ftest-coverage -o main main.cpp
+        g++ -fprofile-arcs -ftest-coverage -std=c++11 -o mi_programa main.cpp
 
-    - name: Ejecutar el programa
+    - name: Run program
       run: |
         ./mi_programa
 
-    - name: Generar reporte de cobertura en HTML
+    - name: Generate coverage report
       run: |
-        gcovr --root . --html --html-details -o coverage.html
+        gcovr --root . --exclude-directories test --html --html-details -o coverage.html
 
-    - name: Subir artefacto del reporte de cobertura
+    - name: Upload coverage report
       uses: actions/upload-artifact@v3
       with:
         name: coverage-report
